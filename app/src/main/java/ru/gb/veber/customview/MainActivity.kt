@@ -12,14 +12,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        with(binding.bindingPathButton) {
-            negativeButton.text = "Cansel"
-            positiveButton.text = "Ok"
-            positiveButton.setOnClickListener {
-                progress.visibility = View.VISIBLE
-                negativeButton.visibility = View.INVISIBLE
-                positiveButton.visibility = View.INVISIBLE
-            }
-        }
     }
 }
