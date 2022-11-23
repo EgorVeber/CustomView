@@ -2,6 +2,7 @@ package ru.gb.veber.customview
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Canvas
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -11,6 +12,14 @@ import ru.gb.veber.customview.databinding.PartButtonsBinding
 
 //Какой root такой и наследний.
 //merge чтобы небыло 2 Constraint
+
+
+enum class BottomButtonAction {
+    POSITIVE, NEGATIVE
+}
+
+typealias OnBottomButtonsActionListener = (BottomButtonAction) -> Unit
+
 class BottomButtonsView(
     context: Context,
     attrs: AttributeSet?,
@@ -19,6 +28,7 @@ class BottomButtonsView(
 ) : ConstraintLayout(context, attrs, defStyleAtr, defStyleRes) {
 
     private val binding: PartButtonsBinding
+    private var listener: OnBottomButtonsActionListener? = null
 
     //Используется когд анадо создать компаннент с стандартным стилем (из темы например если переопределили).
     //Если нет стиля ни в теме ни в XML тогда будет братся styleRes можно задать default стиль.
@@ -30,7 +40,9 @@ class BottomButtonsView(
 
     //Можно указать стандартный стиль вместо 0(3тий параметр) или стиль из темы если 0 то вроде ничего не будет братся
     //Вызается в xml. attrs это из xml которые.
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, R.attr.bottomButtonStyle)
+    constructor(context: Context, attrs: AttributeSet?) : this(context,
+        attrs,
+        R.attr.bottomButtonStyle)
 
     //Этот constructor дли создания из кода обычно тоесть никогда
     constructor(context: Context) : this(context, null)
@@ -40,6 +52,7 @@ class BottomButtonsView(
         inflater.inflate(R.layout.part_buttons, this, true)//Наши атрибуты
         binding = PartButtonsBinding.bind(this)
         initializeAttributes(attrs, defStyleAtr, defStyleRes)
+        initListeners()
     }
 
     private fun initializeAttributes(attrs: AttributeSet?, defStyleAtr: Int, defStyleRes: Int) {
@@ -90,5 +103,18 @@ class BottomButtonsView(
         }
 
         typedArray.recycle()// Очищаем ресурсы
+    }
+
+    private fun initListeners() {
+        binding.positiveButton.setOnClickListener {
+            this.listener?.invoke(BottomButtonAction.POSITIVE)
+        }
+        binding.negativeButton.setOnClickListener {
+            this.listener?.invoke(BottomButtonAction.NEGATIVE)
+        }
+    }
+
+    fun setListener(listener: OnBottomButtonsActionListener?) {
+        this.listener = listener
     }
 }
