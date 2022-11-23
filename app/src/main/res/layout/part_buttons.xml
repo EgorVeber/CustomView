@@ -10,6 +10,7 @@
         android:id="@+id/negativeButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:freezesText="true"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/space"
