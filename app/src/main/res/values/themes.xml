@@ -13,9 +13,28 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="materialButtonStyle">@style/MyMaterialButtonStyle</item>
+        <item name="bottomButtonStyle">@style/DefaultMyButtonsStyle</item>
+
     </style>
 
     <style name="MyMaterialButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="textAllCaps">false</item>
+    </style>
+
+
+
+
+<!--    Нужно для примера в дефолтные кострукторы-->
+    <style name="ConcreteMyButtonStyle">
+        <item name="bottomPositiveBackgroundColor">#008800</item>
+    </style>
+    <style name="DefaultMyButtonsStyle">
+        <item name="bottomPositiveBackgroundColor">#880000</item>
+    </style>
+
+
+<!--    Используем только когда не указал стиль в теме , в xml атрибутах идефолтный -->
+    <style name="MyBottomButtonsStyle">
+        <item name="bottomPositiveBackgroundColor">#ff8800</item>
     </style>
 </resources>

@@ -11,4 +11,8 @@
 
         <attr name="bottomProgressMode" format="boolean" />
     </declare-styleable>
+
+
+<!--    Будет атрибутом по умолчанию-->
+    <attr name="bottomButtonStyle" format="reference" />
 </resources>

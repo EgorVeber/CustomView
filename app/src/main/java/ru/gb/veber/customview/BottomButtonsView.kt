@@ -26,11 +26,11 @@ class BottomButtonsView(
     constructor(context: Context, attrs: AttributeSet?, defStyleAtr: Int) : this(context,
         attrs,
         defStyleAtr,
-        0)
+        R.style.MyBottomButtonsStyle)
 
-    //Можно указать стандартный стиль вместо 0 или стиль из темы если 0 то вроде ничего не будет братся
+    //Можно указать стандартный стиль вместо 0(3тий параметр) или стиль из темы если 0 то вроде ничего не будет братся
     //Вызается в xml. attrs это из xml которые.
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, R.attr.bottomButtonStyle)
 
     //Этот constructor дли создания из кода обычно тоесть никогда
     constructor(context: Context) : this(context, null)
@@ -71,7 +71,7 @@ class BottomButtonsView(
 
             val positiveTextBgColor =
                 typedArray.getColor(R.styleable.BottomButtonsView_bottomPositiveTextColor,
-                    Color.WHITE)
+                    Color.WHITE)//Когда нету 4 атрибутов либо они не заданы.
             positiveButton.setTextColor(positiveTextBgColor)
 
 
