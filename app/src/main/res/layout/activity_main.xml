@@ -11,6 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:bottomNegativeButtonText="Reject"
+        app:bottomPositiveTextColor="@color/black"
         app:bottomPositiveButtonText="Apply"
         app:bottomNegativeBackgroundColor="#b8a4a4"
         app:bottomProgressMode="false"

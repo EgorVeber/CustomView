@@ -30,6 +30,21 @@ class BottomButtonsView(
     private val binding: PartButtonsBinding
     private var listener: OnBottomButtonsActionListener? = null
 
+    var isProgressMode: Boolean = false//По умолчанию
+        set(value) {
+            field = value
+
+            if (value) {
+                binding.positiveButton.visibility = INVISIBLE
+                binding.negativeButton.visibility = INVISIBLE
+                binding.progress.visibility = VISIBLE
+            } else {
+                binding.positiveButton.visibility = VISIBLE
+                binding.negativeButton.visibility = VISIBLE
+                binding.progress.visibility = GONE
+            }
+        }
+
     //Используется когд анадо создать компаннент с стандартным стилем (из темы например если переопределили).
     //Если нет стиля ни в теме ни в XML тогда будет братся styleRes можно задать default стиль.
     // Если все есть то только не переопредленные атрибуты будут братся из нашего default стиль если вы его написали.
@@ -65,11 +80,11 @@ class BottomButtonsView(
         with(binding) {
             val positiveButtonText =
                 typedArray.getString(R.styleable.BottomButtonsView_bottomPositiveButtonText)
-            positiveButton.text = positiveButtonText ?: "Ok"
+            setPositiveButtonText(positiveButtonText)
 
             val negativeButtonText =
                 typedArray.getString(R.styleable.BottomButtonsView_bottomNegativeButtonText)
-            negativeButton.text = negativeButtonText ?: "Cancel"
+            setNegativeButtonText(negativeButtonText)
 
             val positiveBottomBgColor =
                 typedArray.getColor(R.styleable.BottomButtonsView_bottomPositiveBackgroundColor,
@@ -88,18 +103,9 @@ class BottomButtonsView(
             positiveButton.setTextColor(positiveTextBgColor)
 
 
-            val isProgressMod =
+             this@BottomButtonsView.isProgressMode =
                 typedArray.getBoolean(R.styleable.BottomButtonsView_bottomProgressMode, false)
 
-            if (isProgressMod) {
-                positiveButton.visibility = INVISIBLE
-                negativeButton.visibility = INVISIBLE
-                progress.visibility = VISIBLE
-            } else {
-                positiveButton.visibility = VISIBLE
-                negativeButton.visibility = VISIBLE
-                progress.visibility = GONE
-            }
         }
 
         typedArray.recycle()// Очищаем ресурсы
@@ -116,5 +122,13 @@ class BottomButtonsView(
 
     fun setListener(listener: OnBottomButtonsActionListener?) {
         this.listener = listener
+    }
+
+    fun setPositiveButtonText(text: String?) {
+        binding.positiveButton.text = text ?: "OK"
+    }
+
+    fun setNegativeButtonText(text: String?) {
+        binding.negativeButton.text = text?:"Cancel"
     }
 }
