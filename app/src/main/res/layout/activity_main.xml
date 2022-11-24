@@ -5,18 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <ru.gb.veber.customview.BottomButtonsView
-        android:id="@+id/bottomButtons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:bottomNegativeButtonText="Reject"
-        app:bottomPositiveTextColor="@color/black"
-        app:bottomPositiveButtonText="Apply"
-        app:bottomNegativeBackgroundColor="#b8a4a4"
-        app:bottomProgressMode="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
