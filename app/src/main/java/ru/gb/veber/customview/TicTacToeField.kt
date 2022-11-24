@@ -24,7 +24,7 @@ class TicTacToeField(val rows: Int, val columns: Int) {
         if (cells[row][column] != cell) {
             cells[row][column] = cell
             listeners.forEach {
-                it.invoke(this)
+                it?.invoke(this)
             }
         }
     }
