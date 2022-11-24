@@ -11,6 +11,19 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+
+        <item name="ticTacToeFieldStyle">@style/GlobalTicTacToeFieldStyle</item>
+
     </style>
+
+    <style name="DefaultTicTacToeFieldStyle">
+        <item name="player1Color">#008800</item>
+        <item name="player2Color">#880000</item>
+        <item name="gridColor">#dfdfdf</item>
+    </style>
+
+    <style name="GlobalTicTacToeFieldStyle" parent="DefaultTicTacToeFieldStyle">
+        <item name="player1Color">#0000ff</item>
+    </style>
+
 </resources>
