@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             binding.ticTacToeField.field = TicTacToeField(
                 Random.nextInt(3, 10),
                 Random.nextInt(3, 10)
+
             )
         }
     }
