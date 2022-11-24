@@ -149,7 +149,6 @@ class BottomButtonsView(
         binding.positiveButton.text = savedState.positiveButtonText
     }
 
-
     class SavedState : BaseSavedState {
         var positiveButtonText: String? = null
 
